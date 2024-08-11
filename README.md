@@ -3,7 +3,7 @@
 문제에서 제공해준 `Quiz.sol`의 내용은 다음과 같다.
 
 Quiz.sol
-```javascript
+```solidity
 pragma solidity ^0.8.13;
 
 contract Quiz{
@@ -31,12 +31,12 @@ contract Quiz{
 	}
 	
 	function addQuiz(Quiz_item memory q) public {}
-    function getAnswer(uint quizId) public view returns (string memory){}
-    function getQuiz(uint quizId) public view returns (Quiz_item memory){}
-    function getQuizNum() public view returns (uint){}
-    function betToPlay(uint quizId) public payable {}
-    function solveQuiz(uint quizId, string memory ans) public returns (bool) {}
-    function claim() public {}
+	function getAnswer(uint quizId) public view returns (string memory){}
+	function getQuiz(uint quizId) public view returns (Quiz_item memory){}
+	function getQuizNum() public view returns (uint){}
+	function betToPlay(uint quizId) public payable {}
+	function solveQuiz(uint quizId, string memory ans) public returns (bool) {}
+	function claim() public {}
 }
 ```
 # 함수 구현
