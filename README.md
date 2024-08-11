@@ -124,7 +124,7 @@ fallback() external payable {
 `fallback()`함수를 통해 컨트랙트의 잔고를 관리한다.
 # Quiz.sol
 ```solidity
-// SPDX-License-Identifier: UNLICENSED
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.13;
 
 contract Quiz{
