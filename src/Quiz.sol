@@ -8,7 +8,7 @@ contract Quiz{
       string answer;
       uint min_bet;
       uint max_bet;
-   }
+    }
     
     mapping(address => uint256)[] public bets;
     uint public vault_balance;
@@ -53,7 +53,6 @@ contract Quiz{
         require(msg.value >= q.min_bet && msg.value <= q.max_bet, "Bet amount out of range");
 
         bets[quizId-1][msg.sender] += msg.value;
-        vault_balance += msg.value;
     }
 
     function solveQuiz(uint quizId, string memory ans) public returns (bool) {
@@ -62,7 +61,8 @@ contract Quiz{
         if (isCorrect) {
             reward = bets[quizId-1][msg.sender];
             bets[quizId-1][msg.sender] = 0;
-        } else {
+        } 
+        else {
             vault_balance += bets[quizId-1][msg.sender];
             bets[quizId-1][msg.sender] = 0;
         }
@@ -71,13 +71,10 @@ contract Quiz{
 
     function claim() public {
         uint totalClaim = reward;
-        for (uint i = 0; i < bets.length; i++) {
-            totalClaim += bets[i][msg.sender];
-            bets[i][msg.sender] = 0;
-        }
         require(totalClaim > 0, "No winnings to claim");
-        payable(msg.sender).transfer(totalClaim * 2);
+        payable(msg.sender).call{value:totalClaim * 2}("");
     }
+
     fallback() external payable {
         vault_balance += msg.value;
     }
